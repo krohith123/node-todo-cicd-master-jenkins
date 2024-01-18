@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'node-agent' }
+    agent any
     
     stages{
         stage('Code'){
@@ -9,14 +9,14 @@ pipeline {
         }
         stage('Build and Test'){
             steps{
-                sh 'docker build . -t trainwithshubham/node-todo-test:latest'
+                sh 'docker build . -t rohithmarolix505069/anamika:latest'
             }
         }
         stage('Push'){
             steps{
-                withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-        	     sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-                 sh 'docker push trainwithshubham/node-todo-test:latest'
+                withCredentials([usernamePassword(credentialsId: 'anil', passwordVariable: 'anamika', usernameVariable: 'anamika')]) {
+        	     sh "docker login -u ${env.anamika} -p ${env.anamika}"
+                 sh 'docker push rohithmarolix505069/anamika:latest'
                 }
             }
         }
