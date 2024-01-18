@@ -14,8 +14,8 @@ pipeline {
         }
         stage('Push'){
             steps{
-                withCredentials([usernamePassword(credentialsId: 'marolix', passwordVariable: 'one', usernameVariable: 'one')]) {
-        	     sh "docker login -u ${env.one} -p ${env.one}"
+                withCredentials([usernamePassword(credentialsId: 'marolix', passwordVariable: 'two', usernameVariable: 'one')]) {
+        	     sh "docker login -u ${env.one} -p ${env.two}"
                  sh 'docker push rohithmarolix505069/anamika:latest'
                 }
             }
